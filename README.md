@@ -1,6 +1,6 @@
 # blog_vue
 
-> vue from my blog
+> vue of my blog
 
 ## Build Setup
 
