@@ -29,7 +29,7 @@
 
     <article class="am-g blog-entry-article" v-for="text in texts">
         <div class="am-u-lg-4 am-u-md-12 am-u-sm-12 blog-entry-img">
-            <img src="static/i/f10.jpg" alt="" class="am-u-sm-12">
+            <img v-lazy="'/storage/'+text.image" alt="" class="am-u-sm-12">
         </div>
         <div class="am-u-lg-8 am-u-md-12 am-u-sm-12 blog-entry-text">
             <span><a href="" class="blog-color">article &nbsp;</a></span>
@@ -43,8 +43,8 @@
 
 
     <ul class="am-pagination">
-      <li class="am-pagination-prev" v-if="page!=1"><a v-on:click="prev">&laquo; Prev</a></li>
-      <li class="am-pagination-next" v-if="page!=totalPage"><a v-on:click="next">Next &raquo;</a></li>
+      <li class="am-pagination-prev" v-if="pageMark!=1"><a href="javascript:void(0);" v-on:click="prev">&laquo; Prev</a></li>
+      <li class="am-pagination-next" v-if="pageMark!=totalPage"><a href="javascript:void(0);" v-on:click="next">Next &raquo;</a></li>
     </ul>
   </div>
   <!-- 右侧关于我界面 -->
@@ -65,6 +65,8 @@ export default {
     return{
       // 页数
       page:1,
+      // 前一页后一页标识
+      pageMark:1,
       // 每页条数
       paginate:6,
       // 总页数
@@ -88,17 +90,21 @@ export default {
         let res = response.data;
         this.texts = res.data;
         this.totalPage = res.last_page;
+        this.pageMark=this.page;
+        this.windowScroll();
       })
     },
     // 前一页
     prev(){
-      this.page--;
-      this.init();
+      this.init(--this.page);
     },
     // 后一页
     next(){
-      this.page++;
-      this.init();
+      this.init(++this.page);
+    },
+    // 窗口滚回最顶部
+    windowScroll(){
+      window.scroll(0, 0);
     }
   }
 }
