@@ -1,35 +1,12 @@
 <template>
 <div>
 <nav-header></nav-header>
-<!-- banner start -->
-<!-- <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-article-margin">
-    <div data-am-widget="slider" class="am-slider am-slider-b1" data-am-slider='{&quot;controlNav&quot;:false}' >
-    <ul class="am-slides">
-      <li>
-        <img src="static/i/b1.jpg">
-        <div class="blog-slider-desc am-slider-desc ">
-            <div class="blog-text-center blog-slider-con">
-                <span><a href="" class="blog-color">Article &nbsp;</a></span>
-                <h1 class="blog-h-margin"><a href="">总在思考一句积极的话</a></h1>
-                <p>那时候刚好下着雨，柏油路面湿冷冷的，还闪烁着青、黄、红颜色的灯火。
-                </p>
-                <span class="blog-bor">2015/10/9</span>
-                <br><br><br><br><br><br><br>
-            </div>
-        </div>
-      </li>
-    </ul>
-    </div>
-</div> -->
-<!-- banner end -->
-
 <!-- content start -->
 <div class="am-g am-g-fixed blog-fixed">
   <div class="am-u-md-8 am-u-sm-12">
-
     <article class="am-g blog-entry-article" v-for="text in texts">
         <div class="am-u-lg-4 am-u-md-12 am-u-sm-12 blog-entry-img">
-            <img v-lazy="'/storage/'+text.image" alt="" class="am-u-sm-12">
+            <img :src="'storage/'+text.image" alt="" class="am-u-sm-12">
         </div>
         <div class="am-u-lg-8 am-u-md-12 am-u-sm-12 blog-entry-text">
             <span><a href="" class="blog-color">article &nbsp;</a></span>
@@ -40,11 +17,10 @@
             <!-- <p><a href="" class="blog-continue">continue reading</a></p> -->
         </div>
     </article>
-
-
-    <ul class="am-pagination">
-      <li class="am-pagination-prev" v-if="pageMark!=1"><a href="javascript:void(0);" v-on:click="prev">&laquo; Prev</a></li>
-      <li class="am-pagination-next" v-if="pageMark!=totalPage"><a href="javascript:void(0);" v-on:click="next">Next &raquo;</a></li>
+    <ul class="am-pagination am-pagination-centered">
+      <li v-bind:class="{'am-disabled':pageMark==1}"><a href="javascript:void(0);" v-on:click="prev">&laquo;</a></li>
+      <li v-for="n in totalPage" v-bind:class="{'am-active': n==pageMark}"><a href="javascript:void(0);">{{ n }}</a></li>
+      <li v-bind:class="{'am-disabled':pageMark==totalPage}"><a href="javascript:void(0);" v-on:click="next">&raquo;</a></li>
     </ul>
   </div>
   <!-- 右侧关于我界面 -->
@@ -52,7 +28,6 @@
 </div>
 <!-- content end -->
   <nav-footer></nav-footer>
-
 </div>
 </template>
 <script>
