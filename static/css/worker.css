@@ -1,0 +1,74 @@
+
+.logo-box {
+    position: relative;
+    margin: auto;
+    text-align: center
+}
+
+.logo-box ul {
+    padding: 0;
+}
+
+.logo-box ul li {
+    width: 41px;
+    display: inline-block;
+    height: 39px;
+    overflow: hidden
+}
+
+/* qq 二维码 */
+.my-qq:hover .qq-logo {
+    width: 100px;
+    height: 100px;
+}
+
+.qq-logo {
+    background: url('../i/my_qq.png') no-repeat;
+    background-size: 100px 100px;
+    overflow: hidden;
+    position: absolute;
+    top: -85px;
+    left: 125px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+/* 微信二维码 */
+.my-wechat:hover .wechat-logo {
+    width: 100px;
+    height: 100px;
+}
+
+.wechat-logo {
+    background: url('../i/my_wechat.png') no-repeat;
+    background-size: 100px 100px;
+    overflow: hidden;
+    position: absolute;
+    top: -85px;
+    left: 165px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+.my-weibo:hover .weibo-logo {
+    width: 100px;
+    height: 100px;
+}
+
+.weibo-logo {
+    background: url('../i/my_weibo.png') no-repeat;
+    background-size: 100px 100px;
+    overflow: hidden;
+    position: absolute;
+    top: -85px;
+    left: 205px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
