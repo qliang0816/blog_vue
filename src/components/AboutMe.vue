@@ -31,6 +31,20 @@
       </ul>
     </div>
     <br><br>
+    <div class="blog-sidebar-widget blog-bor">
+        <h2 class="blog-title"><span>Category</span></h2>
+        <ul class="am-list admin-sidebar-list" id="collapase-nav-1"  style="text-align:left">
+            <li class="am-panel" v-for="(value,key,index) in textCate">
+                <a :data-am-collapse="JSON.stringify({parent: '#collapase-nav-1', target: '#'+index+'-nav'})">
+                    {{ key }}
+                    <i class="am-icon-angle-right am-fr am-margin-right"></i>
+                </a>
+                <ul class="am-list am-collapse admin-sidebar-sub" :id="index+'-nav'">
+                    <li v-for="i in value"><router-link :to="'article/'+i.id">{{ i.title }}</router-link></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
     <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
         <h2 class="blog-title"><span>TAG cloud</span></h2>
         <div class="am-u-sm-12 blog-clear-padding">
@@ -46,7 +60,10 @@ import axios from 'axios'
 export default {
   data(){
     return{
+      // 标签分类
       tagCate:[],
+      // 文章分类
+      textCate:[],
     }
   },
   mounted(){
@@ -57,6 +74,10 @@ export default {
       axios.get('/tagcate').then((response)=>{
         this.tagCate = response.data;
       });
+      axios.get('/category').then((response)=>{
+        this.textCate = response.data;
+        console.log(response.data);
+      })
     }
   }
 }
