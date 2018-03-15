@@ -71,10 +71,10 @@ export default {
   },
   methods:{
     init(){
-      axios.get('/tagcate').then((response)=>{
+      axios.get('/api/tagcate').then((response)=>{
         this.tagCate = response.data;
       });
-      axios.get('/category').then((response)=>{
+      axios.get('/api/category').then((response)=>{
         this.textCate = response.data;
       })
     }

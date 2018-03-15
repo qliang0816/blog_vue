@@ -53,10 +53,10 @@ export default {
   },
   methods:{
     init(){
-      axios.get('/titlecate').then((response)=>{
+      axios.get('/api/titlecate').then((response)=>{
         this.titleCate = response.data;
       });
-      axios.get('/imagecate').then((response)=>{
+      axios.get('/api/imagecate').then((response)=>{
         this.imageCate = response.data;
       });
     }

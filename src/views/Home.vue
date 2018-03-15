@@ -61,7 +61,7 @@ export default {
   methods:{
     // 初始化
     init(){
-      axios.get("/home",{
+      axios.get("/api/home",{
         params:{
           paginate:this.paginate,
           page:this.page
