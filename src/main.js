@@ -4,6 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueLazyload from 'vue-lazyload'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css' //样式文件
+
+Vue.directive('highlight', function (el) {
+  let blocks = el.querySelectorAll('pre code');
+  blocks.forEach((block) => {
+    hljs.highlightBlock(block)
+  })
+})
+
 Vue.use(VueLazyload)
 
 Vue.config.productionTip = false

@@ -6,13 +6,13 @@
   <div class="am-u-md-8 am-u-sm-12">
     <article class="am-g blog-entry-article" v-for="text in texts">
         <div class="am-u-lg-4 am-u-md-12 am-u-sm-12 blog-entry-img">
-            <img :src="'storage/'+text.image" alt="" class="am-u-sm-12">
+            <img :src="'/storage/'+text.image" alt="" class="am-u-sm-12">
         </div>
         <div class="am-u-lg-8 am-u-md-12 am-u-sm-12 blog-entry-text">
             <span><a href="" class="blog-color">article &nbsp;</a></span>
             <span> @Leo Qin &nbsp;</span>
             <span>{{ text.updated_at }}</span>
-            <h1><router-link to="">{{ text.title }}</router-link></h1>
+            <h1><router-link :to="'/article/'+text.id">{{ text.title }}</router-link></h1>
             <p>{{ text.summary }}</p>
             <!-- <p><a href="" class="blog-continue">continue reading</a></p> -->
         </div>
@@ -61,7 +61,12 @@ export default {
   methods:{
     // 初始化
     init(){
-      axios.get("/home/paginate/"+this.paginate+"?page="+this.page).then((response)=>{
+      axios.get("/home",{
+        params:{
+          paginate:this.paginate,
+          page:this.page
+        }
+      }).then((response)=>{
         let res = response.data;
         this.texts = res.data;
         this.totalPage = res.last_page;
