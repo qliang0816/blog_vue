@@ -25,8 +25,8 @@
       </div> -->
       <hr>
       <ul class="am-pagination blog-article-margin">
-        <li class="am-pagination-prev"><a href="#" class="">&laquo; 一切的回顾</a></li>
-        <li class="am-pagination-next"><a href="">不远的未来 &raquo;</a></li>
+        <li v-if="previous!=null" class="am-pagination-prev"><router-link :to="'/article/'+previous.id">&laquo; {{ previous.title }}</router-link></li>
+        <li v-if="next!=null" class="am-pagination-next"><router-link :to="'/article/'+next.id">{{ next.title }} &raquo;</router-link></li>
       </ul>
       <!-- <hr> -->
       <!-- <form class="am-form am-g">
@@ -96,8 +96,13 @@ export default {
         this.text = marked(this.article.text,{sanitize:true});
         this.previous = response.data.previous;
         this.next = response.data.next;
+        window.scroll(0, 0);
       })
-    }
+    },
+  },
+  watch:{
+    // 监控路由变化，变化就刷新主组件
+    "$route":"init"
   }
 }
 </script>
