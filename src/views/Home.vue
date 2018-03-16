@@ -6,7 +6,7 @@
   <div class="am-u-md-8 am-u-sm-12">
     <article class="am-g blog-entry-article" v-for="text in texts">
         <div class="am-u-lg-4 am-u-md-12 am-u-sm-12 blog-entry-img">
-            <img :src="'/storage/'+text.image" alt="" class="am-u-sm-12">
+            <img v-lazy="'/storage/'+text.image" alt="" class="am-u-sm-12">
         </div>
         <div class="am-u-lg-8 am-u-md-12 am-u-sm-12 blog-entry-text">
             <span><a href="" class="blog-color">article &nbsp;</a></span>

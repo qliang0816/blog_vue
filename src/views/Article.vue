@@ -14,7 +14,7 @@
           </p>
         </div>
         <div class="am-article-bd">
-          <img :src="'/storage/'+article.image" alt="" class="blog-entry-img blog-article-margin am-img-responsive" style="margin: 0 auto;height:400px">
+          <img v-lazy="'/storage/'+article.image" alt="" class="blog-entry-img blog-article-margin am-img-responsive" style="margin: 0 auto;height:400px">
         </div>
         <p v-html="text" v-highlight></p>
       </article>
@@ -93,7 +93,7 @@ export default {
         }
       }).then((response)=>{
         this.article = response.data.article;
-        this.text = marked(this.article.text,{sanitize:true});
+        this.text = marked(this.article.text,{sanitize:false});
         this.previous = response.data.previous;
         this.next = response.data.next;
         window.scroll(0, 0);
