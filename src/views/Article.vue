@@ -87,7 +87,7 @@ export default {
   },
   methods:{
     init(){
-      axios.get('/article',{
+      axios.get('/api/article',{
         params:{
           id:this.$route.params.id
         }
