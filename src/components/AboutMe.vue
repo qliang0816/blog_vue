@@ -4,8 +4,15 @@
     <div class="blog-sidebar-widget blog-bor">
         <h2 class="blog-text-center blog-title"><span>About ME</span></h2>
         <img src="/static/i/me.jpeg" alt="about me" class="blog-entry-img" >
-        <p>秦梁(Leo)</p>
-        <p>写博客:一方面,为了找到更多志同道合的人;另一方面,为了更好地学习,扩大影响力.对于任何一个程序员来说是极其必要的.我的博客内容包括了,技术笔记,生活图片库.对我来说,博客记录我的成长过程,更可以让未来的我看到现在的不成熟想法与创意.</p>
+        <p class="am-monospace">秦梁(Leo)</p>
+        <div class="am-kai" style="text-align:left">
+          <p>
+            <h6>写博客:</h6>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一方面,为了找到更多志同道合的人; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;另一方面,为了更好地学习,扩大影响力。对于任何一个程序员来说是极其必要的。 <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的博客内容包括了,技术笔记,生活图片库。对我来说,博客记录我的成长过程,更可以让未来的我看到现在的不成熟想法与创意。
+          </p>
+        </div>
     </div>
     <div class="blog-sidebar-widget blog-bor logo-box">
         <h2 class="blog-text-center blog-title"><span>Contact ME</span></h2>
