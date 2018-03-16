@@ -19,7 +19,7 @@
     </article>
     <ul class="am-pagination am-pagination-centered">
       <li v-bind:class="{'am-disabled':pageMark==1}"><a href="javascript:void(0);" v-on:click="prev">&laquo;</a></li>
-      <li v-for="n in totalPage" v-bind:class="{'am-active': n==pageMark}"><a href="javascript:void(0);">{{ n }}</a></li>
+      <li v-for="n in totalPage" v-bind:class="{'am-active': n==pageMark}"><a href="javascript:void(0);" @click="jump(n)">{{ n }}</a></li>
       <li v-bind:class="{'am-disabled':pageMark==totalPage}"><a href="javascript:void(0);" v-on:click="next">&raquo;</a></li>
     </ul>
   </div>
@@ -85,6 +85,11 @@ export default {
     // 窗口滚回最顶部
     windowScroll(){
       window.scroll(0, 0);
+    },
+    // 跳转页面
+    jump(n){
+      this.page = n;
+      this.init();
     }
   }
 }
