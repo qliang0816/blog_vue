@@ -24,7 +24,7 @@
             <li v-for="item in imageCate"><router-link to="">{{ item.name }}</router-link></li>
           </ul>
         </li>
-        <li><router-link to="">Timeline</router-link></li>
+        <li><router-link to="/timeline">Timeline</router-link></li>
       </ul>
       <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
         <div class="am-form-group">
