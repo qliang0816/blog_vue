@@ -5,23 +5,10 @@
   <div class="am-g am-g-fixed blog-fixed blog-content">
     <div class="am-u-sm-12">
       <h1 class="blog-text-center">-- Timeline --</h1>
+      <div v-html="timelineData">
 
-      <div class="timeline-year" v-for="(year_data,year) in timelineData">
-        <h1>{{ year }}</h1>
-        <hr>
-        <ul v-for="(month_data,month) in year_data">
-          <h3>{{ month }}月</h3>
-          <hr>
-          <li v-for="item in month_data">
-              <span class="am-u-sm-4 am-u-md-2 timeline-span">{{ item.updated_at }}</span>
-              <span class="am-u-sm-8 am-u-md-6"><router-link :to="'/article/'+item.id">{{ item.title }}</router-link></span>
-              <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">article</span>
-              <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">Leo Qin</span>
-          </li>
-          <br><br>
-        </ul>
-        <br>
       </div>
+
       <hr>
     </div>
   </div>
@@ -38,7 +25,7 @@ export default {
   data(){
     return{
       // 时间线数据
-      timelineData:[]
+      timelineData:''
     }
   },
   components:{
@@ -52,21 +39,36 @@ export default {
     init(){
       axios.get('/api/timeline').then((response)=>{
         let data = response.data;
-        // console.log(data);
-        this.timelineData = response.data;
-        var result = data.reduce((res, item) => {
-          if (res[item.year] == null) {
-            res[item.year] = {}
-          }
-          if (res[item.year][item.month] == null) {
-            res[item.year][item.month] = []
-          }
-          res[item.year][item.month].push(item)
-          // console.log(res);
+        let result = data.reduce((res, {id, year, month, title, updated_at}) => {
+          if (!res.has(year)) res.set(year, new Map())
+          let thisYear = res.get(year)
+          if (!thisYear.has(month)) thisYear.set(month, [])
+          let thisMonth = thisYear.get(month)
+          thisMonth.push({id, title, updated_at})
           return res
-        }, {})
-
-        this.timelineData = result;
+        }, new Map())
+        for (let [year_key,year_value] of result) {
+          this.timelineData += "<div class='timeline-year'> \
+                              <h1>"+year_key+"</h1> \
+                              <hr>";
+          for (let [month_key,month_value] of year_value) {
+            this.timelineData += "<ul> \
+                                <h3>"+month_key+"月</h3> \
+                                <hr>";
+            month_value.forEach(element => {
+              this.timelineData +=  "<li> \
+                                    <span class='am-u-sm-4 am-u-md-2 timeline-span'>"+element.updated_at+"</span> \
+                                    <span class='am-u-sm-8 am-u-md-6'><a href=/article/"+element.id+">"+element.title+"</a></span> \
+                                    <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>article</span> \
+                                    <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>Leo Qin</span> \
+                                </li>";
+            });
+            this.timelineData += "<br><br> \
+                              </ul>";
+          }
+          this.timelineData +="<br> \
+                              </div>";
+        }
       })
     }
   }
