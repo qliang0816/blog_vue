@@ -48,26 +48,31 @@ export default {
           return res
         }, new Map())
         for (let [year_key,year_value] of result) {
-          this.timelineData += "<div class='timeline-year'> \
-                              <h1>"+year_key+"</h1> \
-                              <hr>";
+          this.timelineData +=
+          "<div class='timeline-year'> \
+          <h1>"+year_key+"</h1> \
+          <hr>";
           for (let [month_key,month_value] of year_value) {
-            this.timelineData += "<ul> \
-                                <h3>"+month_key+"月</h3> \
-                                <hr>";
+            this.timelineData +=
+            "<ul> \
+            <h3>"+month_key+"月</h3> \
+            <hr>";
             month_value.forEach(element => {
-              this.timelineData +=  "<li> \
-                                    <span class='am-u-sm-4 am-u-md-2 timeline-span'>"+element.updated_at+"</span> \
-                                    <span class='am-u-sm-8 am-u-md-6'><a href=/article/"+element.id+">"+element.title+"</a></span> \
-                                    <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>article</span> \
-                                    <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>Leo Qin</span> \
-                                </li>";
+              this.timelineData +=
+              "<li> \
+                <span class='am-u-sm-4 am-u-md-2 timeline-span'>"+element.updated_at+"</span> \
+                <span class='am-u-sm-8 am-u-md-6'><a href=/article/"+element.id+">"+element.title+"</a></span> \
+                <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>article</span> \
+                <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>Leo Qin</span> \
+              </li>";
             });
-            this.timelineData += "<br><br> \
-                              </ul>";
+            this.timelineData +=
+            "<br><br> \
+            </ul>";
           }
-          this.timelineData +="<br> \
-                              </div>";
+          this.timelineData +=
+          "<br> \
+          </div>";
         }
       })
     }
