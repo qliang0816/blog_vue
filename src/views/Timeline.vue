@@ -6,9 +6,7 @@
     <div class="am-u-sm-12">
       <h1 class="blog-text-center">-- Timeline --</h1>
       <div v-html="timelineData">
-
       </div>
-
       <hr>
     </div>
   </div>
