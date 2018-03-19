@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import Article from '@/views/Article';
 import Timeline from '@/views/Timeline';
+import Media from '@/views/Media';
 
 Vue.use(Router);
 
@@ -24,6 +25,12 @@ export default new Router({
       name: 'Timeline',
       component: Timeline,
     },
+    {
+      path: '/media',
+      name: 'Media',
+      component: Media,
+    },
+
 
   ]
 });

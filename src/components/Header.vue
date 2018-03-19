@@ -20,8 +20,8 @@
             Ablum <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-            <li><router-link to="">All</router-link></li>
-            <li v-for="item in imageCate"><router-link to="">{{ item.name }}</router-link></li>
+            <li><router-link to="/media">All</router-link></li>
+            <li v-for="item in imageCate"><router-link :to="'/media?category_id='+item.id">{{ item.name }}</router-link></li>
           </ul>
         </li>
         <li><router-link to="/timeline">Timeline</router-link></li>

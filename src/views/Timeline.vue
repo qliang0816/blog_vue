@@ -59,7 +59,7 @@ export default {
               this.timelineData +=
               "<li> \
                 <span class='am-u-sm-4 am-u-md-2 timeline-span'>"+element.updated_at+"</span> \
-                <span class='am-u-sm-8 am-u-md-6'><a href=/article/"+element.id+">"+element.title+"</a></span> \
+                <span class='am-u-sm-8 am-u-md-6'><a href=/#/article/"+element.id+">"+element.title+"</a></span> \
                 <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>article</span> \
                 <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'>Leo Qin</span> \
               </li>";
@@ -72,7 +72,9 @@ export default {
           "<br> \
           </div>";
         }
-      })
+      });
+      // this.$refs.NavHeader.$emit('init')
+      console.log(this.$refs)
     }
   }
 }
