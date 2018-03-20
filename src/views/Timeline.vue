@@ -73,8 +73,6 @@ export default {
           </div>";
         }
       });
-      // this.$refs.NavHeader.$emit('init')
-      console.log(this.$refs)
     }
   }
 }
