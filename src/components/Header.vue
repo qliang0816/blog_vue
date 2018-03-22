@@ -11,8 +11,7 @@
             Category <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-
-            <li v-for="item in titleCate"><router-link to="">{{ item.name }}</router-link></li>
+            <li v-for="item in titleCate"><a href="javascript:void(0);" @click="selectCateToParent(item.id)">{{ item.name }}</a></li>
           </ul>
         </li>
         <li class="am-dropdown" data-am-dropdown>
@@ -45,7 +44,7 @@ export default {
       // 文章标题分类
       titleCate:[],
       // 图片分类
-      imageCate:[]
+      imageCate:[],
     }
   },
   mounted(){
@@ -59,6 +58,10 @@ export default {
       axios.get('/api/imagecate').then((response)=>{
         this.imageCate = response.data;
       });
+    },
+    selectCateToParent(category_id){
+      // 触发主组件，更改分类id
+      this.$emit('selectCateFromHeader',category_id);
     }
   }
 

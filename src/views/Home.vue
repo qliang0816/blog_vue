@@ -1,6 +1,7 @@
 <template>
 <div>
-<nav-header></nav-header>
+<!-- 监听子组件，是否需要分类 -->
+<nav-header v-on:selectCateFromHeader="selectCateFromHeader"></nav-header>
 <!-- content start -->
 <div class="am-g am-g-fixed blog-fixed">
   <div class="am-u-md-8 am-u-sm-12">
@@ -47,16 +48,18 @@ export default {
       // 总页数
       totalPage:'',
       // 文章
-      texts:[]
+      texts:[],
+      // 分类id
+      category_id:''
     }
   },
   mounted(){
     this.init();
   },
   components:{
+    NavHeader,
     AboutMe,
     NavFooter,
-    NavHeader
   },
   methods:{
     // 初始化
@@ -64,7 +67,8 @@ export default {
       axios.get("/api/home",{
         params:{
           paginate:this.paginate,
-          page:this.page
+          page:this.page,
+          category_id:this.category_id
         }
       }).then((response)=>{
         let res = response.data;
@@ -89,6 +93,12 @@ export default {
     // 跳转页面
     jump(n){
       this.page = n;
+      this.init();
+    },
+    // 选择分类
+    selectCateFromHeader(category_id){
+      // 接受子组件的数据变化，更新分类
+      this.category_id = category_id;
       this.init();
     }
   }
