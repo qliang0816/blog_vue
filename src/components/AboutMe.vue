@@ -43,11 +43,11 @@
         <ul class="am-list admin-sidebar-list" id="collapase-nav-1"  style="text-align:left">
             <li class="am-panel" v-for="(value,key,index) in textCate">
                 <a :data-am-collapse="JSON.stringify({parent: '#collapase-nav-1', target: '#'+index+'-nav'})">
-                    {{ key }}
+                    &nbsp;&nbsp;{{ key }}
                     <i class="am-icon-angle-right am-fr am-margin-right"></i>
                 </a>
                 <ul class="am-list am-collapse admin-sidebar-sub" :id="index+'-nav'">
-                    <li v-for="i in value"><router-link :to="'article/'+i.id">{{ i.title }}</router-link></li>
+                    <li v-for="i in value"><router-link :to="'article/'+i.id">&nbsp;&nbsp;{{ i.title }}</router-link></li>
                 </ul>
             </li>
         </ul>

@@ -1,7 +1,7 @@
 <template>
 <div>
 <!-- 监听子组件，是否需要分类 -->
-<nav-header v-on:selectCateFromHeader="selectCateFromHeader"></nav-header>
+<nav-header v-on="{selectCateFromHeader:selectCateFromHeader,searchFromHeader:searchFromHeader}"></nav-header>
 <!-- content start -->
 <div class="am-g am-g-fixed blog-fixed">
   <div class="am-u-md-8 am-u-sm-12">
@@ -50,7 +50,9 @@ export default {
       // 文章
       texts:[],
       // 分类id
-      category_id:''
+      category_id:'',
+      // 查询数据
+      searchData:''
     }
   },
   mounted(){
@@ -68,7 +70,8 @@ export default {
         params:{
           paginate:this.paginate,
           page:this.page,
-          category_id:this.category_id
+          category_id:this.category_id,
+          searchData:this.searchData,
         }
       }).then((response)=>{
         let res = response.data;
@@ -99,6 +102,11 @@ export default {
     selectCateFromHeader(category_id){
       // 接受子组件的数据变化，更新分类
       this.category_id = category_id;
+      this.init();
+    },
+    // 搜索功能
+    searchFromHeader(searchData){
+      this.searchData = searchData;
       this.init();
     }
   }

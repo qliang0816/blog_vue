@@ -25,11 +25,11 @@
         </li>
         <li><router-link to="/timeline">Timeline</router-link></li>
       </ul>
-      <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+      <div class="am-topbar-form am-topbar-right am-form-inline">
         <div class="am-form-group">
-          <input type="text" class="am-form-field am-input-sm" placeholder="搜索">
+          <input v-model="searchData" type="text" class="am-form-field am-input-sm" placeholder="搜索" @keyup.enter="searchToParent">
         </div>
-      </form>
+      </div>
     </div>
   </nav>
   <hr>
@@ -45,6 +45,8 @@ export default {
       titleCate:[],
       // 图片分类
       imageCate:[],
+      // 搜索内容
+      searchData:''
     }
   },
   mounted(){
@@ -62,6 +64,10 @@ export default {
     selectCateToParent(category_id){
       // 触发主组件，更改分类id
       this.$emit('selectCateFromHeader',category_id);
+    },
+    searchToParent(){
+      let searchData = this.searchData;
+      this.$emit('searchFromHeader',searchData);
     }
   }
 
