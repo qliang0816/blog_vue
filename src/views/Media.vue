@@ -35,7 +35,7 @@ export default {
   methods:{
     init(){
       // console.log(this.$route.fullPath)
-      axios.get(this.$route.fullPath).then((response)=>{
+      axios.get("/api"+this.$route.fullPath).then((response)=>{
         this.imageList = response.data;
       })
     }
