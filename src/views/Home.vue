@@ -63,9 +63,20 @@ export default {
     AboutMe,
     NavFooter,
   },
+  // 监控category路由变化
+  watch:{
+    $route:function(){
+      // console.log(1);
+      this.init();
+    }
+  },
   methods:{
     // 初始化
     init(){
+      // console.log(2);
+      // console.log(this.$route.query.category_id);
+      this.category_id = this.$route.query.category_id =='undefined' ? '' : this.$route.query.category_id;
+      this.searchData = this.$route.query.search =='undefined' ? '' : this.$route.query.search;
       axios.get("/api/home",{
         params:{
           paginate:this.paginate,

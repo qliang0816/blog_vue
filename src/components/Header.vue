@@ -11,7 +11,8 @@
             Category <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-            <li v-for="item in titleCate"><a href="javascript:void(0);" @click="selectCateToParent(item.id)">{{ item.name }}</a></li>
+            <!-- <li v-for="item in titleCate"><a href="javascript:void(0);" @click="selectCateToParent(item.id)">{{ item.name }}</a></li> -->
+            <li v-for="item in titleCate"><router-link :to="{path:'/',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
           </ul>
         </li>
         <li class="am-dropdown" data-am-dropdown>
@@ -20,7 +21,7 @@
           </a>
           <ul class="am-dropdown-content">
             <li><router-link to="/media">All</router-link></li>
-            <li v-for="item in imageCate"><router-link :to="'/media?category_id='+item.id">{{ item.name }}</router-link></li>
+            <li v-for="item in imageCate"><router-link :to="{path:'/media',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
           </ul>
         </li>
         <li><router-link to="/timeline">Timeline</router-link></li>
@@ -67,9 +68,9 @@ export default {
     },
     searchToParent(){
       let searchData = this.searchData;
-      this.$emit('searchFromHeader',searchData);
+      // this.$emit('searchFromHeader',searchData);
+      this.$router.push({path:'/',query:{search:searchData}});
     }
   }
-
 }
 </script>
