@@ -30,7 +30,5 @@ export default new Router({
       name: 'Media',
       component: Media,
     },
-
-
   ]
 });

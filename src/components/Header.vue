@@ -2,26 +2,25 @@
 <div>
   <!-- nav start -->
   <nav class="am-g am-g-fixed blog-fixed blog-nav">
-  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
     <div class="am-collapse am-topbar-collapse" id="blog-collapse">
       <ul class="am-nav am-nav-pills am-topbar-nav">
         <li><router-link to="/">Articles</router-link></li>
-        <li class="am-dropdown" data-am-dropdown>
-          <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:void(0);">
-            Category <span class="am-icon-caret-down"></span>
-          </a>
-          <ul class="am-dropdown-content">
-            <li v-for="item in titleCate"><router-link :to="{path:'/',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
-          </ul>
+        <li id="dropdown-justify-category">
+          <li class="am-dropdown" id="dropdown-category">
+            <a class="am-dropdown-toggle" href="javascript:void(0);">Category <span class="am-icon-caret-down"></span></a>
+            <ul class="am-dropdown-content">
+              <li v-for="item in titleCate"><router-link :to="{path:'/',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
+            </ul>
+          </li>
         </li>
-        <li class="am-dropdown" data-am-dropdown>
-          <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:void(0);">
-            Ablum <span class="am-icon-caret-down"></span>
-          </a>
-          <ul class="am-dropdown-content">
-            <li><router-link to="/media">All</router-link></li>
-            <li v-for="item in imageCate"><router-link :to="{path:'/media',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
-          </ul>
+        <li id="dropdown-justify-media">
+          <li class="am-dropdown" id="dropdown-media">
+            <a class="am-dropdown-toggle" href="javascript:void(0);">Ablum <span class="am-icon-caret-down"></span></a>
+            <ul class="am-dropdown-content">
+              <li><router-link to="/media">All</router-link></li>
+              <li v-for="item in imageCate"><router-link :to="{path:'/media',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
+            </ul>
+          </li>
         </li>
         <li><router-link to="/timeline">Timeline</router-link></li>
       </ul>
@@ -60,6 +59,8 @@ export default {
       axios.get('/api/imagecate').then((response)=>{
         this.imageCate = response.data;
       });
+      $('#dropdown-category').dropdown({justify: '#dropdown-justify-category'});
+      $('#dropdown-media').dropdown({justify: '#dropdown-justify-media'});
     },
     searchToParent(){
       let searchData = this.searchData;

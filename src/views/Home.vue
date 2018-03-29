@@ -1,6 +1,6 @@
 <template>
 <div>
-<nav-header></nav-header>
+<nav-header :key="key"></nav-header>
 <!-- content start -->
 <div class="am-g am-g-fixed blog-fixed">
   <div class="am-u-md-8 am-u-sm-12">
@@ -51,7 +51,8 @@ export default {
       // 分类id
       category_id:'',
       // 查询数据
-      searchData:''
+      searchData:'',
+
     }
   },
   mounted(){
@@ -61,6 +62,12 @@ export default {
     NavHeader,
     AboutMe,
     NavFooter,
+  },
+  // 排除header组件复用
+  computed: {
+    key() {
+      return this.$route.name !== undefined? this.$route.name +new Date(): this.$route +new Date()
+    }
   },
   // 监控category路由变化
   watch:{
