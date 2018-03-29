@@ -1,7 +1,7 @@
 <template>
 <div>
   <nav-header></nav-header>
-<!-- content srart -->
+<!-- content start -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
   <figure data-am-widget="figure" class="am am-figure am-figure-default "   data-am-figure="{  pureview: 'true' }">
       <div id="container">
@@ -22,7 +22,7 @@ export default {
   data(){
     return{
       // 图片列表
-      imageList:[]
+      imageList:''
     }
   },
   components:{
@@ -34,16 +34,21 @@ export default {
   },
   methods:{
     init(){
-      // console.log(this.$route.fullPath)
       axios.get("/api"+this.$route.fullPath).then((response)=>{
         this.imageList = response.data;
       })
     }
   },
-  updated(){
-    $(function(){
-      $('#container').pinto();
-    });
+  watch:{
+    'imageList':function(){
+      this.$nextTick(function(){
+        $(function(){
+          setTimeout(function(){
+            $('#container').pinto()
+          },100);
+        });
+      })
+    }
   }
 }
 </script>

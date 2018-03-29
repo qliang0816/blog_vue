@@ -1,7 +1,6 @@
 <template>
 <div>
-<!-- 监听子组件，是否需要分类 -->
-<nav-header v-on="{selectCateFromHeader:selectCateFromHeader,searchFromHeader:searchFromHeader}"></nav-header>
+<nav-header></nav-header>
 <!-- content start -->
 <div class="am-g am-g-fixed blog-fixed">
   <div class="am-u-md-8 am-u-sm-12">
@@ -65,16 +64,13 @@ export default {
   },
   // 监控category路由变化
   watch:{
-    $route:function(){
-      // console.log(1);
+    '$route':function(){
       this.init();
     }
   },
   methods:{
     // 初始化
     init(){
-      // console.log(2);
-      // console.log(this.$route.query.category_id);
       this.category_id = this.$route.query.category_id =='undefined' ? '' : this.$route.query.category_id;
       this.searchData = this.$route.query.search =='undefined' ? '' : this.$route.query.search;
       axios.get("/api/home",{
@@ -109,17 +105,6 @@ export default {
       this.page = n;
       this.init();
     },
-    // 选择分类
-    selectCateFromHeader(category_id){
-      // 接受子组件的数据变化，更新分类
-      this.category_id = category_id;
-      this.init();
-    },
-    // 搜索功能
-    searchFromHeader(searchData){
-      this.searchData = searchData;
-      this.init();
-    }
   }
 }
 </script>

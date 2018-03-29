@@ -11,7 +11,6 @@
             Category <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-            <!-- <li v-for="item in titleCate"><a href="javascript:void(0);" @click="selectCateToParent(item.id)">{{ item.name }}</a></li> -->
             <li v-for="item in titleCate"><router-link :to="{path:'/',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
           </ul>
         </li>
@@ -62,13 +61,8 @@ export default {
         this.imageCate = response.data;
       });
     },
-    selectCateToParent(category_id){
-      // 触发主组件，更改分类id
-      this.$emit('selectCateFromHeader',category_id);
-    },
     searchToParent(){
       let searchData = this.searchData;
-      // this.$emit('searchFromHeader',searchData);
       this.$router.push({path:'/',query:{search:searchData}});
     }
   }
