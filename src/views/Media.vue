@@ -45,7 +45,7 @@ export default {
         $(function(){
           setTimeout(function(){
             $('#container').pinto()
-          },100);
+          },45);
         });
       })
     }
