@@ -47,7 +47,7 @@
                     <i class="am-icon-angle-right am-fr am-margin-right"></i>
                 </a>
                 <ul class="am-list am-collapse admin-sidebar-sub" :id="index+'-nav'">
-                    <li v-for="i in value"><router-link :to="'article/'+i.id">&nbsp;&nbsp;{{ i.title }}</router-link></li>
+                    <li v-for="i in value"><router-link :to="'/article/'+i.id">&nbsp;&nbsp;{{ i.title }}</router-link></li>
                 </ul>
             </li>
         </ul>
