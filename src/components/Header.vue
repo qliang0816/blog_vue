@@ -9,7 +9,7 @@
           <li class="am-dropdown" id="dropdown-category">
             <a class="am-dropdown-toggle" href="javascript:void(0);">Category <span class="am-icon-caret-down"></span></a>
             <ul class="am-dropdown-content">
-              <li v-for="item in titleCate"><router-link :to="{path:'/',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
+              <li v-for="item in titleCate"><router-link :to="{path:'/',query:{category:item.id}}">{{ item.name }}</router-link></li>
             </ul>
           </li>
         </li>
@@ -18,7 +18,7 @@
             <a class="am-dropdown-toggle" href="javascript:void(0);">Ablum <span class="am-icon-caret-down"></span></a>
             <ul class="am-dropdown-content">
               <li><router-link to="/media">All</router-link></li>
-              <li v-for="item in imageCate"><router-link :to="{path:'/media',query:{category_id:item.id}}">{{ item.name }}</router-link></li>
+              <li v-for="item in imageCate"><router-link :to="{path:'/media',query:{category:item.id}}">{{ item.name }}</router-link></li>
             </ul>
           </li>
         </li>

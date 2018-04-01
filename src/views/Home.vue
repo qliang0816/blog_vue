@@ -49,7 +49,7 @@ export default {
       // 文章
       texts:[],
       // 分类id
-      category_id:'',
+      category:'',
       // 查询数据
       searchData:'',
 
@@ -78,13 +78,13 @@ export default {
   methods:{
     // 初始化
     init(){
-      this.category_id = this.$route.query.category_id =='undefined' ? '' : this.$route.query.category_id;
+      this.category = this.$route.query.category =='undefined' ? '' : this.$route.query.category;
       this.searchData = this.$route.query.search =='undefined' ? '' : this.$route.query.search;
       axios.get("/api/home",{
         params:{
           paginate:this.paginate,
           page:this.page,
-          category_id:this.category_id,
+          category_id:this.category,
           searchData:this.searchData,
         }
       }).then((response)=>{
