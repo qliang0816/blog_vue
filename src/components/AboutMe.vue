@@ -55,7 +55,7 @@
     <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
         <h2 class="blog-title"><span>TAG cloud</span></h2>
         <div class="am-u-sm-12 blog-clear-padding">
-        <router-link v-for="item in tagCate" :key="item.id" to="" class="blog-tag">{{ item.name }}</router-link>
+        <router-link v-for="item in tagCate" :key="item.id" :to="{path:'/',query:{tag:item.id}}" class="blog-tag">{{ item.name }}</router-link>
         </div>
     </div>
 </div>

@@ -50,6 +50,8 @@ export default {
       texts:[],
       // 分类id
       category:'',
+      // 标签id
+      tag:'',
       // 查询数据
       searchData:'',
 
@@ -79,6 +81,7 @@ export default {
     // 初始化
     init(){
       this.category = this.$route.query.category =='undefined' ? '' : this.$route.query.category;
+      this.tag = this.$route.query.tag =='undefined' ? '' : this.$route.query.tag;
       this.searchData = this.$route.query.search =='undefined' ? '' : this.$route.query.search;
       axios.get("/api/home",{
         params:{
@@ -86,6 +89,7 @@ export default {
           page:this.page,
           category_id:this.category,
           searchData:this.searchData,
+          tag_id:this.tag
         }
       }).then((response)=>{
         let res = response.data;
