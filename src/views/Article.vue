@@ -18,11 +18,14 @@
         </div>
         <p v-html="text" v-highlight></p>
       </article>
-      <!-- <div class="am-g blog-article-widget blog-article-margin">
+      <div class="am-g blog-article-widget blog-article-margin">
         <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
-          <span class="am-icon-tags"> &nbsp;</span><a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
+          <span class="am-icon-tags"> &nbsp;</span>
+          <a href="#">标签</a>
+          <a href="#">TAG</a>
+          <a href="#">啦啦</a>
         </div>
-      </div> -->
+      </div>
       <hr>
       <ul class="am-pagination blog-article-margin">
         <li v-if="previous!=null" class="am-pagination-prev"><router-link :to="'/article/'+previous.id">&laquo; {{ previous.title }}</router-link></li>
@@ -74,7 +77,9 @@ export default {
       // 上一篇
       previous:[],
       // 下一篇
-      next:[]
+      next:[],
+      // 文章标签
+      tags:''
     }
   },
   components:{
@@ -97,6 +102,15 @@ export default {
         this.previous = response.data.previous;
         this.next = response.data.next;
         window.scroll(0, 0);
+      })
+      axios.get('/api/tagcate',{
+        params:{
+          article_id:this.$route.params.id
+        }
+      }).then((response)=>{
+        console.log(response)
+        this.tags = response.data;
+        console.log(this.tags)
       })
     },
   },
