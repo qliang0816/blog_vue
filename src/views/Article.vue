@@ -21,9 +21,7 @@
       <div class="am-g blog-article-widget blog-article-margin">
         <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
           <span class="am-icon-tags"> &nbsp;</span>
-          <a href="#">标签</a>
-          <a href="#">TAG</a>
-          <a href="#">啦啦</a>
+          <router-link class="am-monospace" v-for="item in tags" :key="item.id" :to="{path:'/',query:{tag:item.id}}">{{ item.name }}</router-link>
         </div>
       </div>
       <hr>
