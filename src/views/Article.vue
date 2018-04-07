@@ -106,9 +106,7 @@ export default {
           article_id:this.$route.params.id
         }
       }).then((response)=>{
-        console.log(response)
         this.tags = response.data;
-        console.log(this.tags)
       })
     },
   },
