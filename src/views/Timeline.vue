@@ -45,6 +45,7 @@ export default {
           thisMonth.push({id, title, updated_at})
           return res
         }, new Map())
+        console.log(result)
         for (let [year_key,year_value] of result) {
           this.timelineData +=
           "<div class='timeline-year'> \

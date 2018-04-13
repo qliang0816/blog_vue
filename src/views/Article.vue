@@ -8,9 +8,11 @@
         <div class="am-article-hd">
           <h1 class="am-article-title blog-text-center">{{ article.title }}</h1>
           <p class="am-article-meta blog-text-center">
-              <span><a href="#" class="blog-color">article &nbsp;</a></span>-
-              <span><a href="#">@Leo_Qin &nbsp;</a></span>-
-              <span><a href="#">{{ article.updated_at }}</a></span>
+            <span class="am-icon-user">&nbsp;<c style="color:black">Leo_Qin</c></span>&nbsp;-&nbsp;
+            <span></span>
+            <span class="am-icon-calendar-minus-o">&nbsp;<c style="color:black">{{ article.updated_at }}</c></span>&nbsp;-&nbsp;
+            <span class="am-icon-tags"></span>
+            <router-link class="am-monospace" v-for="item in tags" :key="item.id" :to="{path:'/',query:{tag:item.id}}">{{ item.name }}&nbsp;</router-link>
           </p>
         </div>
         <div class="am-article-bd">
@@ -18,12 +20,7 @@
         </div>
         <p v-html="text" v-highlight></p>
       </article>
-      <div class="am-g blog-article-widget blog-article-margin">
-        <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
-          <span class="am-icon-tags"> &nbsp;</span>
-          <router-link class="am-monospace" v-for="item in tags" :key="item.id" :to="{path:'/',query:{tag:item.id}}">{{ item.name }}&nbsp;</router-link>
-        </div>
-      </div>
+
       <hr>
       <ul class="am-pagination blog-article-margin">
         <li v-if="previous!=null" class="am-pagination-prev"><router-link :to="'/article/'+previous.id">&laquo; {{ previous.title }}</router-link></li>
