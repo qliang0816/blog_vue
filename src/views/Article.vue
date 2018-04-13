@@ -8,9 +8,9 @@
         <div class="am-article-hd">
           <h1 class="am-article-title blog-text-center">{{ article.title }}</h1>
           <p class="am-article-meta blog-text-center">
-            <span class="am-icon-user">&nbsp;<c style="color:black">Leo_Qin</c></span>&nbsp;-&nbsp;
+            <span class="am-icon-user">&nbsp;<span style="color:black">Leo_Qin</span></span>&nbsp;-&nbsp;
             <span></span>
-            <span class="am-icon-calendar-minus-o">&nbsp;<c style="color:black">{{ article.updated_at }}</c></span>&nbsp;-&nbsp;
+            <span class="am-icon-calendar-minus-o">&nbsp;<span style="color:black">{{ article.updated_at }}</span></span>&nbsp;-&nbsp;
             <span class="am-icon-tags"></span>
             <router-link class="am-monospace" v-for="item in tags" :key="item.id" :to="{path:'/',query:{tag:item.id}}">{{ item.name }}&nbsp;</router-link>
           </p>
