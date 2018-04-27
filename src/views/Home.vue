@@ -10,6 +10,7 @@
         </div>
         <div class="am-u-lg-8 am-u-md-12 am-u-sm-12 blog-entry-text">
             <span style="color:grey" class="am-icon-user">&nbsp;<span style="color:black" class="am-kai">Leo Qin</span></span>&nbsp;-&nbsp;
+            <span style="color:grey" class="am-icon-eye">&nbsp;<span style="color:black" class="am-kai">{{ text.is_read }}</span></span>&nbsp;-&nbsp;
             <span style="color:grey" class="am-icon-calendar-minus-o">&nbsp;<span style="color:black" class="am-kai">{{ text.updated_at }}</span></span>
             <h1><router-link :to="'/article/'+text.id">{{ text.title }}</router-link></h1>
             <p>{{ text.summary }}</p>
