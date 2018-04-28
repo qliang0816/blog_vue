@@ -47,7 +47,9 @@
                     <i class="am-icon-angle-right am-fr am-margin-right"></i>
                 </a>
                 <ul class="am-list am-collapse admin-sidebar-sub" :id="index+'-nav'">
-                    <li v-for="i in value"><router-link :to="'/article/'+i.id">&nbsp;&nbsp;{{ i.title }}</router-link></li>
+                    <li style="height:42px" v-for="i in value"><router-link :to="'/article/'+i.id">&nbsp;&nbsp;{{ i.title }}</router-link></li>
+                    <!-- 默认显示六条 -->
+                    <li v-if="value.length==6"><router-link :to="{path:'/',query:{category:value[0].category_id}}">&nbsp;&nbsp;&nbsp;&nbsp;<ins>查看更多...</ins></router-link></li>
                 </ul>
             </li>
         </ul>
