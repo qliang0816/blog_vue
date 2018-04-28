@@ -62,14 +62,14 @@ export default {
             month_value.forEach(date_value => {
               this.timelineData +=
               "<li> \
-                <span class='am-u-sm-4 am-u-md-2 timeline-span am-icon-calendar-minus-o'> "+date_value.updated_at+"</span> \
-                <span class='am-u-sm-6 am-u-md-5 am-icon-file-text'> <a href=/#/article/"+date_value.id+">"+date_value.title+"</a></span> \
-                <span class='am-u-sm-6 am-u-md-3 am-hide-sm-only am-icon-tags'> ";
+                <span class='am-u-sm-4 am-u-md-2 timeline-span'><span class='am-icon-calendar-minus-o' style='color:grey'></span> "+date_value.updated_at+"</span> \
+                <span class='am-u-sm-6 am-u-md-5'><span class='am-icon-file-text' style='color:grey'></span> <a href=/#/article/"+date_value.id+">"+date_value.title+"</a></span> \
+                <span class='am-u-sm-6 am-u-md-3 am-hide-sm-only'><span class='am-icon-tags' style='color:grey'></span> ";
                 date_value.final_tags.forEach((element,index) => {
                   this.timelineData+="<a href=/#/?tag="+index+">"+element+"</a> ";
                 });
                 this.timelineData+="</span> \
-                <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only am-icon-user'> Leo Qin</span> \
+                <span class='am-u-sm-4 am-u-md-2 am-hide-sm-only'><span class='am-icon-user' style='color:grey'></span> Leo Qin</span> \
               </li>";
             });
             this.timelineData +=

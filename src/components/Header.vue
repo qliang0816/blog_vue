@@ -4,10 +4,10 @@
   <nav class="am-g am-g-fixed blog-fixed blog-nav">
     <div class="am-collapse am-topbar-collapse" id="blog-collapse">
       <ul class="am-nav am-nav-pills am-topbar-nav">
-        <li><router-link to="/">Articles</router-link></li>
+        <li><router-link to="/"><span class="am-icon-home"></span> 首页</router-link></li>
         <li id="dropdown-justify-category">
           <li class="am-dropdown" id="dropdown-category">
-            <a class="am-dropdown-toggle" href="javascript:void(0);">Category <span class="am-icon-caret-down"></span></a>
+            <a class="am-dropdown-toggle" href="javascript:void(0);"><span class="am-icon-tasks"></span> 分类 <span class="am-icon-caret-down"></span></a>
             <ul class="am-dropdown-content">
               <li v-for="item in titleCate"><router-link :to="{path:'/',query:{category:item.id}}">{{ item.name }}</router-link></li>
             </ul>
@@ -15,14 +15,14 @@
         </li>
         <li id="dropdown-justify-media">
           <li class="am-dropdown" id="dropdown-media">
-            <a class="am-dropdown-toggle" href="javascript:void(0);">Ablum <span class="am-icon-caret-down"></span></a>
+            <a class="am-dropdown-toggle" href="javascript:void(0);"><span class="am-icon-photo"></span> 相册 <span class="am-icon-caret-down"></span></a>
             <ul class="am-dropdown-content">
-              <li><router-link to="/media">All</router-link></li>
+              <li><router-link to="/media">所有</router-link></li>
               <li v-for="item in imageCate"><router-link :to="{path:'/media',query:{category:item.id}}">{{ item.name }}</router-link></li>
             </ul>
           </li>
         </li>
-        <li><router-link to="/timeline">Timeline</router-link></li>
+        <li><router-link to="/timeline"><span class="am-icon-archive"></span> 归档</router-link></li>
       </ul>
       <div class="am-topbar-form am-topbar-right am-form-inline">
         <div class="am-form-group">
