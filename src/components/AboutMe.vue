@@ -2,7 +2,7 @@
 <div>
   <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
     <div class="blog-sidebar-widget blog-bor">
-        <h2 class="blog-text-center blog-title"><span>About ME</span></h2>
+        <h2 class="blog-text-center blog-title"><span>About Me</span></h2>
         <img src="/static/i/me.jpeg" alt="about me" class="blog-entry-img" >
         <p class="am-monospace">秦梁(Leo)</p>
         <div class="am-kai" style="text-align:left">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="blog-sidebar-widget blog-bor logo-box">
-        <h2 class="blog-text-center blog-title"><span>Contact ME</span></h2>
+        <h2 class="blog-text-center blog-title"><span>Contact Me</span></h2>
         <ul>
           <li>
               <a href="https://github.com/LeoQin0816" target="_blank"><span class="am-icon-github am-icon-fw blog-icon"></span></a>
@@ -55,11 +55,18 @@
         </ul>
     </div>
     <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
-        <h2 class="blog-title"><span>TAG cloud</span></h2>
+        <h2 class="blog-title"><span>TAG Cloud</span></h2>
         <div class="am-u-sm-12 blog-clear-padding">
         <router-link v-for="item in tagCate" :key="item.id" :to="{path:'/',query:{tag:item.id}}" class="blog-tag">{{ item.name }}</router-link>
         </div>
     </div>
+    <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
+        <h2 class="blog-title"><span>Netease Cloud Music</span></h2>
+        <div class="am-u-sm-12 blog-clear-padding">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=548234487&auto=1&height=66"></iframe>
+        </div>
+    </div>
+
 </div>
 </div>
 </template>
